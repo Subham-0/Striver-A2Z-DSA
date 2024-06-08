@@ -76,12 +76,73 @@ public class Solution {
 
     void allDivisor(int n) {
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
                 System.out.print(i + " ");
+                if (i != n / i) {
+                    System.out.print(n / i + " ");
+                }
             }
         }
         System.out.println();
+    }
+
+    void primeNumber(int n) {
+        int count = 0;
+        for (int i = 1; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                count++;
+                if (i != n / i) {
+                    count++;
+                }
+            }
+
+        }
+        if (count == 2) {
+            System.out.println(n + " is a prime number");
+        } else {
+            System.out.println(n + " is not a prime number");
+        }
+    }
+
+    int gcd(int a, int b) {
+        // Bruteforce Approach
+
+        // int gcdNum = 1; // 1 is common factor all number
+        // for (int i = 1; i < Math.min(a, b); i++) {
+        // if (a % i == 0 && b % i == 0) {
+        // gcdNum = i;
+        // }
+        // }
+        // return gcdNum;
+
+        // Better Approach
+        // iterate from the minimum of a and b because the greastest common divisor of
+        // two munbers can not exceed the smaller number.
+        // for (int i = Math.min(a, b); i > 0; i--) {
+        // if (a % i == 0 && b % i == 0) {
+        // return i;
+        // }
+        // }
+        // return 1;
+
+        // optimal Approach
+        // by Euclidean Algorthm
+        while (a > 0 && b > 0) {
+            if (a > b) {
+                // a = a - b;
+                a = a % b;
+            } else {
+                // b = b - a;
+                b = b % a;
+            }
+        }
+        if (a == 0) {
+            return b;
+        } else {
+            return a;
+        }
+
     }
 
     public static void main(String[] args) {
@@ -95,9 +156,12 @@ public class Solution {
             // obj.reverseNumber(n);
             // obj.isPalindromeNumber(n);
             // obj.armStrong(n);
-            obj.allDivisor(n);
-
+            // obj.allDivisor(n);
+            obj.primeNumber(n);
+            int ans = obj.gcd(21,42); // greatest common divisor
+            System.out.println(ans +" is gcd the numbers");
         }
         sc.close();
+
     }
 }
