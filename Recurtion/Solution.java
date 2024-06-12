@@ -129,6 +129,63 @@ public class Solution {
         Collections.reverse(Arrays.asList(arr));
     }
 
+    public static boolean isPalindrome(int i, String str) {
+        if (i > str.length() / 2) {
+            return true;
+        }
+        if (str.charAt(i) != str.charAt(str.length() - i - 1)) {
+            return false;
+        }
+        return isPalindrome(i + 1, str);
+
+    }
+
+    public static void fibonacciSeries1(int n) {
+        if (n == 0) {
+            System.out.println(0);
+        } else {
+            int fib[] = new int[n + 1];
+            fib[0] = 0;
+            fib[1] = 1;
+            for (int i = 2; i <= n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+
+            }
+            for (int j = 0; j <= n; j++) {
+                System.out.println(fib[j]);
+            }
+        }
+    }
+
+    public static void fibonacciSeries2(int n) {
+        if (n == 0) {
+            System.out.println(0);
+        } else {
+            int secondLast = 0, last = 1;
+            int cur;
+            System.out.println(secondLast);
+            System.out.println(last);
+            for (int i = 2; i <= n; i++) {
+                cur = last + secondLast;
+                secondLast = last;
+                last = cur;
+                System.out.println(cur + " ");
+            }
+
+        }
+    }
+
+    public static int fibonacciSeries3(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        int last = fibonacciSeries3(n - 1);
+        int slast = fibonacciSeries3(n - 2);
+
+        return last + slast;
+
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -152,9 +209,29 @@ public class Solution {
         // reverseArray3(arr, 0, n - 1); // using recursive method
         // printArray(arr, n);
 
-        Integer arr2[] = { 5, 4, 3, 2, 1 };
-        reverseArray4(arr2); // using library function
-        printArray4(arr2, n);
+        // Integer arr2[] = { 5, 4, 3, 2, 1 };
+        // reverseArray4(arr2); // using library function
+        // printArray4(arr2, n);
+
+        // check if the given string is palindrome or not
+        // String str = sc.next();
+
+        // boolean r = isPalindrome(0, str);
+        // if (r == true) {
+        // System.out.println(str + " is palindrome");
+        // } else {
+        // System.out.println(str + " is not a palindrome");
+        // }
+
+        // Given an integer N. Print the Fibonacci series up to the Nth term.
+        fibonacciSeries1(n); // Native approach
+        System.out.println();
+        fibonacciSeries2(n); // Space optimized
+        System.out.println();
+        for (int i = 0; i <= n; i++) {
+            System.out.println(fibonacciSeries3(i));
+        }
+
         sc.close();
     }
 
