@@ -1,4 +1,4 @@
-package Basic_Hashing;
+package Basic_Hashing.Using_Array.Number_hashing;
 
 import java.util.Scanner;
 
