@@ -4,14 +4,10 @@
         {
             "label": "Compile and run",
             "type": "shell",
-            "command": "",
+            "command": "cmd",
             "args": [
-                "java",
-                "${relativeFile}",
-                "<",
-                "input.txt",
-                ">",
-                "output.txt"
+                "/c",
+                 "java ${relativeFile} < input.txt > output.txt"
             ],
             "presentation": {
                 "reveal": "never"
@@ -21,10 +17,10 @@
                 "isDefault": true
             },
             "problemMatcher": {
-                "owner": "py",
+                "owner": "java",
                 "fileLocation": [
                     "relative",
-                    "${workspaceRoot}"
+                    "${workspaceFolder}"
                 ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
