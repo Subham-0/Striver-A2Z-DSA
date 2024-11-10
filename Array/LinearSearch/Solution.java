@@ -23,7 +23,7 @@ public class Solution {
         for (int i = 0; i < size; i++) {
             arr[i] = sc.nextInt();
         }
-        int out = linearsearch(arr,9);
+        int out = linearsearch(arr,2);
         System.out.println(out);
     }
 }
